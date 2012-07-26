@@ -95,7 +95,9 @@ rndr_autolink(struct buf *ob, const struct buf *link, enum mkd_autolink type, vo
 		bufputc(ob, '\"');
 		options->link_attributes(ob, link, opaque);
 		bufputc(ob, '>');
-	} else {
+	} else if (options->flags & HTML_NEW_TAB_LINKS) {
+    BUFPUTSL(ob, "\" target=\"_blank\">");
+  } else {
 		BUFPUTSL(ob, "\">");
 	}
 
@@ -251,7 +253,9 @@ rndr_link(struct buf *ob, const struct buf *link, const struct buf *title, const
 		bufputc(ob, '\"');
 		options->link_attributes(ob, link, opaque);
 		bufputc(ob, '>');
-	} else {
+	} else if (options->flags & HTML_NEW_TAB_LINKS) {
+    BUFPUTSL(ob, "\" target=\"_blank\">");
+  } else {
 		BUFPUTSL(ob, "\">");
 	}
 

@@ -58,12 +58,12 @@ class VendorCommand(BaseCommand):
 
 
 setup(
-    name='misaka',
+    name='prat-misaka',
     version='1.0.3',
-    description='The Python binding for Sundown, a markdown parsing library.',
-    author='Frank Smit',
-    author_email='frank@61924.nl',
-    url='http://misaka.61924.nl/',
+    description="Prat fork of Frank Smit's Python binding for Sundown, a markdown parsing library.",
+    author='Kevin Le',
+    author_email='solnovus@gmail.com',
+    url='https://www.github.com/bkad/misaka',
     license='MIT',
     long_description=open(os.path.join(dirname, 'README.rst')).read(),
     scripts=['scripts/misaka'],

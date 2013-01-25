@@ -2433,7 +2433,6 @@ sd_markdown_new(
 	if (extensions & MKDEXT_AUTOLINK) {
 		md->active_char[':'] = MD_CHAR_AUTOLINK_URL;
 		md->active_char['@'] = MD_CHAR_AUTOLINK_EMAIL;
-		md->active_char['w'] = MD_CHAR_AUTOLINK_WWW;
 	}
 
 	if (extensions & MKDEXT_SUPERSCRIPT)

@@ -59,7 +59,7 @@ class VendorCommand(BaseCommand):
 
 setup(
     name='prat-misaka',
-    version='1.0.3',
+    version='1.0.4',
     description="Prat fork of Frank Smit's Python binding for Sundown, a markdown parsing library.",
     author='Kevin Le',
     author_email='solnovus@gmail.com',

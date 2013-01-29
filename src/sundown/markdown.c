@@ -2432,7 +2432,6 @@ sd_markdown_new(
 
 	if (extensions & MKDEXT_AUTOLINK) {
 		md->active_char[':'] = MD_CHAR_AUTOLINK_URL;
-		md->active_char['@'] = MD_CHAR_AUTOLINK_EMAIL;
 	}
 
 	if (extensions & MKDEXT_SUPERSCRIPT)

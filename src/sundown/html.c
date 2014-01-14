@@ -91,15 +91,21 @@ rndr_autolink(struct buf *ob, const struct buf *link, enum mkd_autolink type, vo
 		BUFPUTSL(ob, "mailto:");
 	escape_href(ob, link->data, link->size);
 
+  bufputc(ob, '\"');
+
 	if (options->link_attributes) {
-		bufputc(ob, '\"');
 		options->link_attributes(ob, link, opaque);
-		bufputc(ob, '>');
-	} else if (options->flags & HTML_NEW_TAB_LINKS) {
-    BUFPUTSL(ob, "\" target=\"_blank\">");
-  } else {
-		BUFPUTSL(ob, "\">");
 	}
+
+  if (options->flags & HTML_NEW_TAB_LINKS) {
+    BUFPUTSL(ob, " target=\"_blank\"");
+  }
+
+  if (options->flags & HTML_NO_REFERRER_LINKS) {
+    BUFPUTSL(ob, " rel=\"noreferrer\"");
+  }
+
+  bufputc(ob, '>');
 
 	/*
 	 * Pretty printing: if we get an email address as
@@ -249,15 +255,21 @@ rndr_link(struct buf *ob, const struct buf *link, const struct buf *title, const
 		escape_html(ob, title->data, title->size);
 	}
 
+  bufputc(ob, '\"');
+
 	if (options->link_attributes) {
-		bufputc(ob, '\"');
 		options->link_attributes(ob, link, opaque);
-		bufputc(ob, '>');
-	} else if (options->flags & HTML_NEW_TAB_LINKS) {
-    BUFPUTSL(ob, "\" target=\"_blank\">");
-  } else {
-		BUFPUTSL(ob, "\">");
 	}
+
+  if (options->flags & HTML_NEW_TAB_LINKS) {
+    BUFPUTSL(ob, " target=\"_blank\"");
+  }
+
+  if (options->flags & HTML_NO_REFERRER_LINKS) {
+    BUFPUTSL(ob, " rel=\"noreferrer\"");
+  }
+
+  bufputc(ob, '>');
 
 	if (content && content->size) bufput(ob, content->data, content->size);
 	BUFPUTSL(ob, "</a>");

@@ -50,6 +50,7 @@ typedef enum {
 	HTML_USE_XHTML = (1 << 8),
 	HTML_ESCAPE = (1 << 9),
 	HTML_NEW_TAB_LINKS = (1 << 12),
+	HTML_NO_REFERRER_LINKS = (1 << 13),
 } html_render_mode;
 
 typedef enum {
